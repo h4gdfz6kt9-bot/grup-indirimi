@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#151923">
+<title>KİM DAHA ÇOK? — Arkadaş Oyunu</title>
+<style>
+:root{--navy:#151923;--gold:#d8b778;--cream:#f4f0e8;--muted:#aeb5c2;--panel:#202633;--line:#343b49;--green:#a8d5b5}
+*{box-sizing:border-box}body{margin:0;background:var(--navy);color:var(--cream);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
+button,input,select{font:inherit}button{cursor:pointer;border:0;transition:transform .12s,opacity .12s}button:active{transform:scale(.985)}.app{max-width:560px;margin:auto;min-height:100vh;padding:22px 18px calc(24px + env(safe-area-inset-bottom));display:flex;flex-direction:column}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}.brand{font-weight:850;letter-spacing:.13em;font-size:13px}.brand span{color:var(--gold)}.pill{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:7px 10px}
+.screen{display:none;flex:1;flex-direction:column}.screen.active{display:flex}.eyebrow{color:var(--gold);font-size:11px;font-weight:750;letter-spacing:.16em;text-transform:uppercase;margin-bottom:12px}
+h1{font-size:clamp(36px,10vw,56px);line-height:1.02;letter-spacing:-.055em;margin:0 0 16px}h2{font-size:28px;letter-spacing:-.04em;line-height:1.12;margin:0 0 12px}p{color:var(--muted);line-height:1.55;margin:0 0 18px}.hero{margin:auto 0}.hero-mark{color:var(--gold);font-size:13px;letter-spacing:.28em;font-weight:800;margin-bottom:10px}.hero h1{max-width:420px}.hero h1 span{color:var(--gold)}
+.btn{width:100%;border-radius:15px;padding:16px 18px;font-weight:750;margin-top:10px}.primary{background:var(--gold);color:#211b10}.secondary{background:var(--panel);color:var(--cream);border:1px solid var(--line)}.textbtn{background:transparent;color:var(--muted);padding:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:20px;margin:12px 0}.label{display:block;color:var(--muted);font-size:12px;font-weight:700;letter-spacing:.07em;margin:0 0 10px}.stepper{display:flex;align-items:center;justify-content:space-between;background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:10px 12px;margin-bottom:20px}.stepper button{width:42px;height:42px;border-radius:12px;background:#303746;color:var(--cream);font-size:24px}.stepper strong{font-size:22px}.name-list{display:grid;gap:8px}.name-list input{width:100%;border:1px solid var(--line);background:#171c26;color:var(--cream);padding:13px 14px;border-radius:12px;outline:none}.name-list input:focus{border-color:var(--gold)}.category-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.category{background:var(--panel);color:var(--cream);border:1px solid var(--line);border-radius:15px;padding:16px 12px;text-align:left}.category.selected{border-color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold)}.category b{display:block;margin-bottom:5px}.category small{color:var(--muted)}.progress-row{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin-bottom:10px}.progress{height:4px;background:#343b49;border-radius:9px;overflow:hidden;margin-bottom:22px}.progress div{height:100%;width:0;background:var(--gold);transition:width .2s}.q-card{background:var(--cream);color:#20232b;border-radius:24px;padding:24px 20px;min-height:225px;display:flex;flex-direction:column;justify-content:center}.q-tag{font-size:11px;letter-spacing:.12em;font-weight:800;color:#75613e;text-transform:uppercase;margin-bottom:14px}.q-text{font-size:clamp(24px,6.6vw,34px);line-height:1.16;letter-spacing:-.04em;font-weight:800}.answers{display:grid;gap:9px;margin-top:14px}.answer{border:1px solid var(--line);background:var(--panel);color:var(--cream);border-radius:13px;text-align:left;padding:14px;display:flex;gap:12px;align-items:center}.letter{border:1px solid #515968;color:var(--gold);border-radius:8px;width:28px;height:28px;display:grid;place-items:center;font-size:12px;font-weight:800;flex-shrink:0}.answer.chosen{border-color:var(--gold)}.answer.correct{border-color:var(--green);background:#24352f}.answer.wrong{border-color:#d48a8a;background:#3a292d}.feedback{background:#202633;border:1px solid var(--line);padding:14px;border-radius:14px;margin-top:12px;color:var(--muted);font-size:14px;line-height:1.45}.feedback strong{display:block;color:var(--cream);margin-bottom:4px}.hide{display:none!important}.result-score{font-size:64px;line-height:1;font-weight:850;letter-spacing:-.07em;color:var(--gold);margin:18px 0 8px}.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:16px}.stat strong{display:block;font-size:24px;margin-bottom:4px}.stat span{font-size:12px;color:var(--muted)}.spacer{flex:1;min-height:20px}.foot{font-size:11px;color:#737d8d;text-align:center;margin-top:20px}.notice{font-size:12px;color:var(--muted);line-height:1.45;margin-top:12px}
+@media(min-width:500px){.app{padding-top:30px}.q-card{min-height:250px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top"><div class="brand">KİM DAHA <span>ÇOK?</span></div><div class="pill">ARKADAŞ MODU</div></header>
+
+  <section id="home" class="screen active">
+    <div class="hero">
+      <div class="hero-mark">BİR TELEFON. TÜM EKİP.</div>
+      <h1>Arkadaşlarını<br><span>ne kadar</span> tanıyorsun?</h1>
+      <p>Telefonu ortaya koy. Soruları cevapla, iddianı ortaya at ve grubun en iyisini bul.</p>
+      <div class="card"><span class="label">NASIL OYNANIR?</span><p style="margin:0">Oyuncu sayısını seçin, telefonu sırayla kullanın ve her soruda cevabınızı kilitleyin. Tur sonunda skorunuzu görün.</p></div>
+      <button class="btn primary" onclick="show('setup')">Oyuna başla <span aria-hidden="true">→</span></button>
+      <button class="btn textbtn" onclick="show('rules')">Nasıl oynanır?</button>
+    </div>
+    <div class="foot">SÜRÜM 0.1 · ÜCRETSİZ DEMO</div>
+  </section>
+
+  <section id="setup" class="screen">
+    <div class="eyebrow">01 / OYUN KURULUMU</div><h2>Kaç kişisiniz?</h2><p>3 ile 10 oyuncu seçebilirsin. İsimleri yazmak isteğe bağlı.</p>
+    <div class="stepper"><button onclick="changeCount(-1)" aria-label="Oyuncu azalt">−</button><strong><span id="count">4</span> oyuncu</strong><button onclick="changeCount(1)" aria-label="Oyuncu artır">+</button></div>
+    <label class="label">OYUNCU İSİMLERİ (İSTEĞE BAĞLI)</label><div id="names" class="name-list"></div>
+    <div class="spacer"></div><button class="btn primary" onclick="show('categories')">Devam et →</button><button class="btn textbtn" onclick="show('home')">Geri</button>
+  </section>
+
+  <section id="categories" class="screen">
+    <div class="eyebrow">02 / TUR SEÇİMİ</div><h2>Modunu seç.</h2><p>İlk demoda genel kültür, eğlence ve spor sorularından oluşan 20 soruluk bir havuz var.</p>
+    <div class="category-grid">
+      <button class="category selected" data-cat="all" onclick="selectCategory(this)"><b>Karışık tur</b><small>Tüm kategoriler</small></button>
+      <button class="category" data-cat="Genel kültür" onclick="selectCategory(this)"><b>Genel kültür</b><small>Bilgi ve keşif</small></button>
+      <button class="category" data-cat="Eğlence" onclick="selectCategory(this)"><b>Eğlence</b><small>Gündelik hayat</small></button>
+      <button class="category" data-cat="Spor" onclick="selectCategory(this)"><b>Spor</b><small>Spor bilgisi</small></button>
+    </div>
+    <div class="card"><span class="label">TUR UZUNLUĞU</span><p style="margin:0">Bu prototipte seçilen kategoriden en fazla 10 soru sorulur. Sorular tekrar etmeden karıştırılır.</p></div>
+    <div class="spacer"></div><button class="btn primary" onclick="startGame()">Turu başlat →</button><button class="btn textbtn" onclick="show('setup')">Geri</button>
+  </section>
+
+  <section id="game" class="screen">
+    <div class="progress-row"><span id="roundLabel">SORU 1 / 10</span><span id="playerLabel">Sıra: Oyuncu 1</span></div>
+    <div class="progress"><div id="progressFill"></div></div>
+    <div class="q-card"><div class="q-tag" id="qCategory">GENEL KÜLTÜR</div><div class="q-text" id="questionText">Soru burada.</div></div>
+    <div id="answers" class="answers"></div>
+    <div id="feedback" class="feedback hide" aria-live="polite"></div>
+    <div class="spacer"></div><button id="nextBtn" class="btn primary hide" onclick="nextQuestion()">Sonraki soru →</button><button class="btn textbtn" onclick="quitGame()">Turu bitir</button>
+  </section>
+
+  <section id="results" class="screen">
+    <div class="eyebrow">TUR TAMAMLANDI</div><h2>Güzel mücadele.</h2><p>Sonuçlarınız hazır. Bir sonraki turda rövanş alabilirsiniz.</p>
+    <div class="result-score" id="score">0/10</div><p id="scoreText">Doğru cevap sayısı</p>
+    <div class="stats"><div class="stat"><strong id="percent">0%</strong><span>Başarı oranı</span></div><div class="stat"><strong id="played">0</strong><span>Oynanan soru</span></div></div>
+    <div class="card"><span class="label">KÜÇÜK NOT</span><p style="margin:0">Bu demo, tek telefonda grup oyununun temel akışını test etmek içindir. İleride oyuncu bazlı puanlama ve “Kim daha çok?” oylama modu eklenebilir.</p></div>
+    <div class="spacer"></div><button class="btn primary" onclick="startGame()">Tekrar oyna</button><button class="btn secondary" onclick="show('home')">Ana sayfa</button>
+  </section>
+
+  <section id="rules" class="screen">
+    <div class="eyebrow">KISA REHBER</div><h2>Oyun nasıl oynanır?</h2>
+    <div class="card"><p><strong style="color:var(--cream)">1.</strong> Oyuncu sayısını belirleyin.</p><p><strong style="color:var(--cream)">2.</strong> Kategori seçin ve turu başlatın.</p><p><strong style="color:var(--cream)">3.</strong> Grup cevabı üzerinde anlaşınca seçeneğe dokunun.</p><p style="margin-bottom:0"><strong style="color:var(--cream)">4.</strong> Doğru cevabı görün ve sonraki soruya geçin.</p></div>
+    <p>Bu ilk prototipte herkes ortak cevap seçer. Oyuncu bazlı skor ve oylama modu sonraki sürümde eklenebilir.</p>
+    <div class="spacer"></div><button class="btn primary" onclick="show('home')">Anladım</button>
+  </section>
+</div>
+<script>
+const QUESTIONS = [
+ {id:"q01",category:"Genel kültür",type:"quiz",text:"Güneş Sistemi'ndeki en büyük gezegen hangisidir?",options:["Satürn","Jüpiter","Neptün","Dünya"],answer:1,explanation:"Jüpiter, Güneş Sistemi'nin en büyük gezegenidir."},
+ {id:"q02",category:"Genel kültür",type:"quiz",text:"Bir üçgenin iç açılarının toplamı kaç derecedir?",options:["90°","180°","270°","360°"],answer:1,explanation:"Öklid geometrisinde üçgenin iç açıları toplamı 180°'dir."},
+ {id:"q03",category:"Genel kültür",type:"quiz",text:"Japonya'nın para birimi hangisidir?",options:["Won","Yuan","Yen","Baht"],answer:2,explanation:"Japonya'nın para birimi Japon yenidir."},
+ {id:"q04",category:"Genel kültür",type:"quiz",text:"Bitkiler fotosentez sırasında atmosferden en çok hangi gazı alır?",options:["Oksijen","Azot","Karbondioksit","Helyum"],answer:2,explanation:"Fotosentezde bitkiler karbondioksit kullanır ve oksijen açığa çıkarır."},
+ {id:"q05",category:"Genel kültür",type:"quiz",text:"Dünyanın yüzey alanı bakımından en büyük okyanusu hangisidir?",options:["Atlas Okyanusu","Hint Okyanusu","Arktik Okyanusu","Pasifik Okyanusu"],answer:3,explanation:"Pasifik Okyanusu, yüzölçümü bakımından en büyük okyanustur."},
+ {id:"q06",category:"Genel kültür",type:"quiz",text:"Bir yıl artık yıl değilse kaç gündür?",options:["364","365","366","367"],answer:1,explanation:"Artık olmayan bir takvim yılı 365 gündür."},
+ {id:"q07",category:"Genel kültür",type:"quiz",text:"İnsan vücudunda kanı pompalayan organ hangisidir?",options:["Akciğer","Karaciğer","Kalp","Böbrek"],answer:2,explanation:"Kalp, kanı dolaşım sistemi boyunca pompalar."},
+ {id:"q08",category:"Genel kültür",type:"quiz",text:"Mona Lisa tablosunu yapan sanatçı kimdir?",options:["Vincent van Gogh","Leonardo da Vinci","Pablo Picasso","Claude Monet"],answer:1,explanation:"Mona Lisa, Leonardo da Vinci'nin eseridir."},
+ {id:"q09",category:"Eğlence",type:"quiz",text:"Satrançta oyun başında her oyuncunun kaç taşı vardır?",options:["12","14","16","18"],answer:2,explanation:"Her oyuncu oyuna 16 taşla başlar."},
+ {id:"q10",category:"Eğlence",type:"quiz",text:"Bir düzinede kaç adet bulunur?",options:["10","12","20","24"],answer:1,explanation:"Bir düzine 12 adettir."},
+ {id:"q11",category:"Eğlence",type:"quiz",text:"Bir maratonun resmi standart uzunluğu yaklaşık kaç kilometredir?",options:["21,1","30","42,195","50"],answer:2,explanation:"Maratonun standart mesafesi 42,195 kilometredir."},
+ {id:"q12",category:"Eğlence",type:"quiz",text:"Hangi alet sıcaklığı ölçmek için kullanılır?",options:["Barometre","Termometre","Ampermetre","Kronometre"],answer:1,explanation:"Termometre sıcaklığı ölçer."},
+ {id:"q13",category:"Eğlence",type:"quiz",text:"Bir saat kaç dakikadır?",options:["30","45","60","90"],answer:2,explanation:"Bir saat 60 dakikadır."},
+ {id:"q14",category:"Eğlence",type:"quiz",text:"Aşağıdakilerden hangisi bir makarna çeşididir?",options:["Penne","Brioche","Gazpacho","Risotto"],answer:0,explanation:"Penne, tüp biçimli bir makarna çeşididir."},
+ {id:"q15",category:"Eğlence",type:"quiz",text:"Satrançta hangi taş L şeklinde hareket eder?",options:["Kale","Fil","At","Vezir"],answer:2,explanation:"At, satranç tahtasında L şeklinde hareket eder."},
+ {id:"q16",category:"Spor",type:"quiz",text:"Bir futbol takımından maç başında sahada kaç oyuncu bulunur?",options:["9","10","11","12"],answer:2,explanation:"Her takım sahada kaleci dâhil 11 oyuncuyla başlar."},
+ {id:"q17",category:"Spor",type:"quiz",text:"Olimpiyat halkalarının sayısı kaçtır?",options:["4","5","6","7"],answer:1,explanation:"Olimpiyat simgesinde birbirine geçmiş beş halka bulunur."},
+ {id:"q18",category:"Spor",type:"quiz",text:"Basketbolda üç sayı çizgisinin gerisinden atılan başarılı şut kaç sayı kazandırır?",options:["1","2","3","4"],answer:2,explanation:"Üç sayı çizgisinin gerisinden yapılan başarılı atış üç sayıdır."},
+ {id:"q19",category:"Spor",type:"quiz",text:"Teniste sıfır puan için kullanılan İngilizce terim hangisidir?",options:["Love","Nil","Blank","Zero"],answer:0,explanation:"Teniste sıfır puan geleneksel olarak “love” diye ifade edilir."},
+ {id:"q20",category:"Spor",type:"quiz",text:"Voleybolda bir takım normal oyunda sahada kaç oyuncuyla yer alır?",options:["5","6","7","8"],answer:1,explanation:"Salon voleybolunda her takım sahada altı oyuncuyla oynar."}
+];
+let playerCount=4, names=[], category="all", deck=[], index=0, correct=0, answered=false;
+const $=id=>document.getElementById(id);
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$(id).classList.add('active');if(id==='setup')renderNames();window.scrollTo(0,0)}
+function changeCount(delta){playerCount=Math.max(3,Math.min(10,playerCount+delta));$('count').textContent=playerCount;renderNames()}
+function renderNames(){const old=[...document.querySelectorAll('#names input')].map(x=>x.value);$('names').innerHTML='';for(let i=0;i<playerCount;i++){const input=document.createElement('input');input.placeholder=`Oyuncu ${i+1}`;input.maxLength=18;input.value=old[i]||names[i]||'';input.setAttribute('aria-label',`Oyuncu ${i+1} adı`);$('names').appendChild(input)}}
+function selectCategory(btn){document.querySelectorAll('.category').forEach(x=>x.classList.remove('selected'));btn.classList.add('selected');category=btn.dataset.cat}
+function startGame(){names=[...document.querySelectorAll('#names input')].map((x,i)=>x.value.trim()||`Oyuncu ${i+1}`);let available=QUESTIONS.filter(q=>category==='all'||q.category===category);deck=available.sort(()=>Math.random()-.5).slice(0,Math.min(10,available.length));index=0;correct=0;show('game');renderQuestion()}
+function renderQuestion(){answered=false;const q=deck[index];$('roundLabel').textContent=`SORU ${index+1} / ${deck.length}`;$('playerLabel').textContent=`Grup: ${names.length} oyuncu`;$('progressFill').style.width=`${index/deck.length*100}%`;$('qCategory').textContent=q.category.toLocaleUpperCase('tr-TR');$('questionText').textContent=q.text;$('answers').innerHTML='';$('feedback').classList.add('hide');$('nextBtn').classList.add('hide');q.options.forEach((opt,i)=>{const b=document.createElement('button');b.className='answer';const letter=document.createElement('span');letter.className='letter';letter.textContent=String.fromCharCode(65+i);const txt=document.createElement('span');txt.textContent=opt;b.append(letter,txt);b.onclick=()=>chooseAnswer(i);$('answers').appendChild(b)})}
+function chooseAnswer(choice){if(answered)return;answered=true;const q=deck[index];if(choice===q.answer)correct++;[...$('answers').children].forEach((b,i)=>{b.disabled=true;if(i===q.answer)b.classList.add('correct');if(i===choice&&choice!==q.answer)b.classList.add('wrong')});$('feedback').innerHTML=`<strong>${choice===q.answer?'Doğru cevap!':'Doğru cevap: '+q.options[q.answer]}</strong>${q.explanation}`;$('feedback').classList.remove('hide');$('nextBtn').textContent=index===deck.length-1?'Sonuçları gör →':'Sonraki soru →';$('nextBtn').classList.remove('hide')}
+function nextQuestion(){index++;if(index>=deck.length){showResults();return}renderQuestion()}
+function showResults(){show('results');$('score').textContent=`${correct}/${deck.length}`;$('percent').textContent=`${Math.round(correct/deck.length*100)}%`;$('played').textContent=deck.length;$('scoreText').textContent=correct===deck.length?'Mükemmel tur!':correct>=Math.ceil(deck.length*.7)?'Gayet iyi oynadınız.':'Rövanş zamanı!';$('progressFill').style.width='100%'}
+function quitGame(){if(confirm('Turu bitirip ana sayfaya dönmek istiyor musun?'))show('home')}
+renderNames();
+</script>
+</body>
+</html>
